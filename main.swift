@@ -1,3 +1,4 @@
+
 import Foundation
 
 
@@ -241,22 +242,23 @@ func isArrayTrue(Array:[Int]) -> Bool {
     return true
 }
 
-var x : [String] = ["ok","hi","weeds","work","please","test","hi","mine","baiple","go","ak","apple","bi","coop","deliver","pizza","omni","man", "cap","come","other", "you", "ball", "ballz", "soup", "gex", "card", "box", "BookStore"]
+var x : [String] = ["ok"]
 var u : [String] = []
-
+print("Type A word then enter to add to a list for them to be sorted")
 print("Type Ctrl-D to exit")
 var line : String?
 repeat {
 //    print("Please Enter A Random word:") 
     line = readLine()
     if line != nil {
-        u = sort(ArrayFirst: x, input: line!)
-        x = u
+        x.insert(line!, at: 0)
+         
+        
     }
 } while line != nil
 
 
-
+x.sort()
 
 
    // print("Please Enter A Random word:")    
@@ -266,6 +268,6 @@ repeat {
     //print(x.sort())
 
 
-print(u)
+print(x)
 print("Finished")
 
