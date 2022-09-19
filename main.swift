@@ -2,19 +2,38 @@
 import Foundation
 
 
-func sort(ArrayFirst: [String], input: String) -> [String] {
+func sort(ArrayFirst: [String]) -> [String] {
 
     var Array = ArrayFirst
     var SortNumArray: [Int] = []
-    Array.insert(input, at: 0)
+  //  Array.insert(input, at: 0)
 
     for i in 0...Array.count - 1 {
         SortNumArray.append(get_SortNum(Word1: Array[i]))
     }
 
     var x = isArrayTrue(Array: SortNumArray)
-    while x == false {
+    for i in 1..<Array.count {
+        var w = i
+        while w > 0 && SortNumArray[w] < SortNumArray[w - 1] {
+            let temp1 = SortNumArray[w]
+            let temp2 = SortNumArray[w - 1]
+            SortNumArray[w] = temp2
+            SortNumArray[w - 1] = temp1
 
+            let tempW1 = Array[w]
+            let tempW2 = Array[w - 1]
+            Array[w] = tempW2
+            Array[w - 1] = tempW1
+            
+          //  swap(&SortNumArray[w - 1], &SortNumArray[w])
+            w -= 1
+        }
+    }
+
+    print(SortNumArray)
+   // while x == false {
+/*
         for i in 0...Array.count - 1 {
             if i + 1 <= Array.count - 1 {
 
@@ -36,7 +55,9 @@ func sort(ArrayFirst: [String], input: String) -> [String] {
             }
         }
         x = isArrayTrue(Array: SortNumArray)
-    }
+        }
+        
+ */
    // print("Returing Array")
     return Array
 }
@@ -242,8 +263,8 @@ func isArrayTrue(Array:[Int]) -> Bool {
     return true
 }
 
-var x : [String] = ["ok"]
-var u : [String] = []
+var x : [String] = []
+
 print("Type A word then enter to add to a list for them to be sorted")
 print("Type Ctrl-D to exit")
 var line : String?
@@ -258,7 +279,7 @@ repeat {
 } while line != nil
 
 
-x.sort()
+let w = sort(ArrayFirst: x)
 
 
    // print("Please Enter A Random word:")    
@@ -268,6 +289,6 @@ x.sort()
     //print(x.sort())
 
 
-print(x)
+print(w)
 print("Finished")
 
